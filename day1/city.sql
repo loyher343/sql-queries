@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS city (
+    id integer primary key autoincrement,
     name text NOT NULL,
     countrycode character(3) not null,
     district text NOT NULL,

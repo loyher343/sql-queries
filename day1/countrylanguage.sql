@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS countrylanguage (
+    id integer primary key autoincrement,
     countrycode character(3),
     language text NOT NULL,
     isofficial boolean NOT NULL,

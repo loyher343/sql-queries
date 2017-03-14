@@ -20,21 +20,22 @@ Chinook creates the database schema for us, but we still need to create a table.
 
 ```
 CREATE TABLE table_name (
-    col_name data_type options,
-    col_name data_type options
+    col_name data_type options/constraints,
+    col_name data_type options/constraints
 )
 ```
 
-Don't worry too much about the data types yet. We'll mostly be using some form of text and some numeric type for most of our data. 
+Don't worry too much about the data types or options yet. We'll mostly be using some form of text and some numeric type for most of our data and we'll add options tomorrow. 
 
 Create a table of your own. Feel free to use this as a model: 
 ```
 CREATE TABLE expenses (
-    id integer,
+    id integer primary key autoincrement,
     name text,
     amount real
 )
 ```
+The options following the id column tell the database to generate and increment this value automatically. We don't need them if we are willing to supply the id ourselves. 
 
 ### Record/Row Creation
 Now that we have a table, we need to insert some records. These become rows in the tables. Here's the basic format: 
@@ -43,10 +44,10 @@ Now that we have a table, we need to insert some records. These become rows in t
 INSERT INTO table_name (col_name, col_name) VALUES (value1, value2);
 ```
 
-For the expense table above, we'd need to insert the data as follows: 
+For the expense table above, we'd need to insert the data as follows. Notice that we don't have to insert the id because we told the database to autoincrement the id for each new record. 
 
 ``` 
-INSERT INTO expenses (id, name, amount) VALUES (1, 'Coffee', 3.78)
+INSERT INTO expenses (name, amount) VALUES ('Coffee', 3.78)
 ```
 
 Okay, that's enough for creation today. Let's spend our time today focusing on existing data. 
