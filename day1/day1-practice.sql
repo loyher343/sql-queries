@@ -109,6 +109,10 @@ drop table if exists countrylanguage;
 -- Which state employs the most web developers? 
 
 
+--STILL WANT MORE? 
+-- Find some data you want to play around with. These queries can be painfully rote if you're using fake data--you can look up only so many fake product orders before your mind begins to wander. See if you can find data for something you're interested in. If you can get the data into a spreadsheet, I'll help you convert it and insert it into chinook. I also have job data for all occupations in Dallas if you're interested.
+
+
 
 
 
