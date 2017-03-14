@@ -1,0 +1,11 @@
+drop table PlaylistTrack;
+drop table Playlist;
+drop table InvoiceLine
+drop table Invoice;
+drop table Track;
+drop table Genre;
+drop table MediaType;
+drop table Album;
+drop table Artist;
+drop table Customer;
+drop table Employee;
