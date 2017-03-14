@@ -5,10 +5,10 @@ Today we are going to explore the language with which we will persist the data f
 
 I'll talk a bit about the concept behind SQL, the relational database, but we will also be playing around with the database as we go over these major concepts. 
 
-To do that, we'll begin with the Microsoft Chinook database, available at https://chinook.ml. This database comes loaded with data, but we'll delete all of that data for our purposes this morning. This afternoon you'll be using the built-in data to practice queries. 
+To do that, we'll begin with the <a href="https://chinook.ml" target="_blank">Microsoft Chinook database</a>. This database comes loaded with data, but we'll delete all of that data for our purposes this morning. This afternoon you'll be using the built-in data to practice queries. 
 
 ## Getting Started
-If you haven't already done so, open https://chinook.ml in another tab. You can look at the schema on the left side of the site to see the data that comes with chinook, but when you are ready, us the scripts in the drop_table.sql script to remove the standard data. Then we can start fresh. 
+If you haven't already done so, open the <a href="https://chinook.ml" target="_blank">Microsoft Chinook database</a> in another tab. You can look at the schema on the left side of the site to see the data that comes with chinook, but when you are ready, us the scripts in the drop_table.sql script to remove the standard data. Then we can start fresh. 
 
 We will be building a few tables together to cover queries, but we can also use the world data, originally provided by the MySQL foundation, for more complex data. I have modified the data to work with the dialect used by Chinook, and I have removed a few data points from the records. I believe the statistics are a few years out of date, but they are still interesting.  
 
