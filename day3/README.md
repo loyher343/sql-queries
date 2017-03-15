@@ -23,6 +23,10 @@ CREATE TABLE some_table(
 )
 ```
 
+That's about it for now. In PostgreSQL, you have many more options, particularly for data types, but you can explore those later. 
+
+
+
 ### Installation
 #### Macs
 For the Mac installation, we'll use Homebrew. If you don't have homebrew, you can get it here: https://brew.sh/. 
