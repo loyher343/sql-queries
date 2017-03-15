@@ -4,6 +4,20 @@ Finally, we can get your server running on your computer and hook your Node/Expr
 
 To get your application hooked up, we will need a database server (we'll use Postgres) and a library that will connect our Node application to the database server (we'll use MassiveJS).
 
+## The Theory
+### Servers and Clients
+With Node and Express, we created a server that was listening for connections. To test/hit your server, you opened connections in Postman or Chrome. 
+
+Now we will run a database server on your local machine. This server will take the place of the Chinook database server we've been using. 
+
+Once we have your server running, we can connect to it through clients. As we did with Postman, we'll use some clients that will allow us to test and manipulate our database outside of our application. 
+
+Then we'll hook up our Express applications, which will become clients of your database server. 
+
+So the browser is the client of the Node/Express server, and the Node/Express server is the client for the database server. 
+
+The browser can get information from the Express server through HTTP requests, and the Express server can get information from the database by making SQL queries. 
+
 ## Postgres
 We have been using SQLite on the Chinook database, but now we'll switch dialects and begin using PostgreSQL. PostgreSQL is a robust and open-sourced SQL dialect, and for the most part, you won't need to know much about the differences. 
 
@@ -24,7 +38,6 @@ CREATE TABLE some_table(
 ```
 
 That's about it for now. In PostgreSQL, you have many more options, particularly for data types, but you can explore those later. 
-
 
 
 ### Installation
@@ -85,4 +98,55 @@ If you're on a PC or you don't like Postico, then you'll need to use pgAdmin (No
 
 If you're using pgAdmin, you'll need to create a server and connect to it. Ask a mentor for help.  
 
-## MassiveJS
+## <a href="https://massive-js.readthedocs.io/en/latest/">MassiveJS</a>
+To talk to our database, we have to make SQL queries. But we're writing JavaScript in our Express application, so we need a library to allow us to write SQL. We'll use MassiveJS for this purpose. 
+
+First, we'll need to install massive:
+
+```
+npm install --save massive
+```
+
+Now we'll add it into our express app:
+
+```
+const express = require('express');
+const massive = require('massive');
+
+const app = express();
+const port = 3000;
+
+app.listen(port, () => {console.log(`Listening on port ${port}`)})
+```
+
+But we're still not connected. We need to give massive the connection information:
+* Username: postgres or your username on your computer
+* Password: the password you use to connect to psql (you may not have one)
+* Host: localhost
+* Database Name
+
+And we format all of this information as a connection string: 
+```
+postgres://username:password@host/database
+```
+Notice that we're connecting through the 'postgres' protocol, just as your browser connects to your Express app through the http protocol. 
+
+Now we're ready to connect the database: 
+
+```
+const express = require('express');
+const massive = require('massive');
+
+const app = express();
+const port = 3000;
+
+const connectionString = 'postgres://username:password@host/database';
+
+const massiveInstance = massive.connectSync({connectionString: connnectionString});
+
+app.set('db', massiveInstance);
+const db = app.get('db');
+
+app.listen(port, () => {console.log(`Listening on port ${port}`)})
+```
+
