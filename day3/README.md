@@ -19,7 +19,7 @@ CREATE TABLE some_table(
 For PostgreSQL, we'll use the keyword `SERIAL`:
 ```
 CREATE TABLE some_table(
-    id integer serial primary key
+    id serial primary key
 )
 ```
 
