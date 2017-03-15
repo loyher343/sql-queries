@@ -101,10 +101,10 @@ If you're using pgAdmin, you'll need to create a server and connect to it. Ask a
 ## <a href="https://massive-js.readthedocs.io/en/latest/">MassiveJS</a>
 To talk to our database, we have to make SQL queries. But we're writing JavaScript in our Express application, so we need a library to allow us to write SQL. We'll use MassiveJS for this purpose. 
 
-First, we'll need to install massive:
+First, we'll need to install massive (and express):
 
 ```
-npm install --save massive
+npm install --save massive express
 ```
 
 Now we'll add it into our express app:
@@ -150,3 +150,15 @@ const db = app.get('db');
 app.listen(port, () => {console.log(`Listening on port ${port}`)})
 ```
 
+Spin up your node app with nodemon and make sure you don't get any errors. Remember to install express. 
+
+Once you have your database connected, make sure you can find data. Create a table if you don't already have one in another client (e.g. Postico or psql), and then add a find operation to your `index.js`:
+
+```
+...
+const db = app.get('db');
+db.table_name.find({}, (err, results) => {
+    console.log(results)
+});
+
+```
