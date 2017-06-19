@@ -6,11 +6,12 @@ const port = 3000;
 
 const connectionString = 'postgres://username:password@localhost/test';
 
-const massiveInstance = massive.connectSync({connectionString: connectionString});
+const massiveConnection = massive(connectionString)
+.then(db => {
+   app.set('db', db)
+})
 
-app.set('db', massiveInstance);
-
-const db = app.get('db');
+// Add endpoint here
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

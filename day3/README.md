@@ -142,10 +142,10 @@ const port = 3000;
 
 const connectionString = 'postgres://username:password@host/database';
 
-const massiveInstance = massive.connectSync({connectionString: connnectionString});
-
-app.set('db', massiveInstance);
-const db = app.get('db');
+const massiveConnection = massive(connectionString)
+.then(db => {
+   app.set('db', db)
+})
 
 app.listen(port, () => {console.log(`Listening on port ${port}`)})
 ```
@@ -155,10 +155,18 @@ Spin up your node app with nodemon and make sure you don't get any errors. Remem
 Once you have your database connected, make sure you can find data. Create a table if you don't already have one in another client (e.g. Postico or psql), and then add a find operation to your `index.js`:
 
 ```
-...
-const db = app.get('db');
-db.table_name.find({}, (err, results) => {
-    console.log(results)
-});
+app.get('/test', function(req, res, next) {
+   const db = app.get('db');
+   db.table_name.find({})
+   .then(results => {
+      console.log(results)
+      res.status(200).send(results)
+   })
+   .catch(err => {
+      console.log(err)
+      next(err)
+   })
+})
+
 
 ```
