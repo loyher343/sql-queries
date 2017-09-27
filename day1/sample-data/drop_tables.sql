@@ -7,5 +7,5 @@ drop table if exists Genre;
 drop table if exists MediaType;
 drop table if exists Album;
 drop table if exists Artist;
-drop table if exists Customer;
+drop table if exists Customera;
 drop table if exists Employee;
